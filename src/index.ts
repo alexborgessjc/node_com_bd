@@ -1,5 +1,6 @@
 //Importando a biblioteca
 import express, {Request, Response, NextFunction} from 'express';
+import errorHandler from './middlewares/error-handler.middleware';
 import statusRoute from './routes/status.route';
 import usersRoute from './routes/users.route';
 
@@ -22,6 +23,9 @@ app.use(usersRoute);
     //Retorna um json
     //res.status(200).send({foo:'Sucesso'})
 //});
+
+//COnfiguração dos Handlers de Erro
+app.use(errorHandler);
 
 //Acessando a porta do PC - 3000
 app.listen(3000, () => {console.log('Aplicação executando na porta 3000!')});
